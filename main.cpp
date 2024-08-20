@@ -23,13 +23,19 @@ int main()
                 case sf::Event::Resized:
                     std::cout << "height :" << " " << event.size.height << " " << "width :" << " " << event.size.width << "\n";
                     break;
-
-                case sf::Event::MouseButtonPressed:
-                    std::cout << "Window Clicked!" << "\n";
-                    break;
-
                 case sf::Event::MouseWheelScrolled:
                     std::cout << "Wheel Scrolled" << "\n";
+                    break;
+                //beta:
+                case sf::Event::MouseButtonPressed:
+                      shape.setFillColor(sf::Color::Blue);
+                    //std::cout << "Window Clicked!" << "\n";
+                     
+                    break;
+
+                
+                case sf::Event::MouseButtonReleased:
+                    shape.setFillColor(sf::Color::Red);
                     break;
 
 
