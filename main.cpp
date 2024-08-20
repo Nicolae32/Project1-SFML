@@ -7,15 +7,20 @@ int main()
     sf::RenderWindow window(sf::VideoMode(200, 200), ":]");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Red);
+        int upTime = 0;
 
     while (window.isOpen())
     {
         sf::Event event;
+            upTime++;
+        std::cout << "Up Time :" << upTime <<"\n";
+
         while (window.pollEvent(event))
         {
 
             switch (event.type)
             {
+
                 case sf::Event::Closed:
                     window.close();
                     break;
@@ -33,7 +38,6 @@ int main()
                      
                     break;
 
-                
                 case sf::Event::MouseButtonReleased:
                     shape.setFillColor(sf::Color::Red);
                     break;
