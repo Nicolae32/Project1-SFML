@@ -13,26 +13,29 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+
+            switch (event.type)
             {
-                window.close();
-            }
-            if (event.type == sf::Event::Resized)
-            {
-                std::cout << "height :" << " " << event.size.height << " " << "width :" << " " << event.size.width<<"\n";
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+
+                case sf::Event::Resized:
+                    std::cout << "height :" << " " << event.size.height << " " << "width :" << " " << event.size.width << "\n";
+                    break;
+
+                case sf::Event::MouseButtonPressed:
+                    std::cout << "Window Clicked!" << "\n";
+                    break;
+
+                case sf::Event::MouseWheelScrolled:
+                    std::cout << "Wheel Scrolled" << "\n";
+                    break;
+
+
 
             }
-            if (event.type == sf::Event::MouseButtonPressed)
-            {
-                
-                std::cout << "Window Clicked!"<<"\n";
-            }
-            if (event.type == sf::Event::MouseWheelScrolled)
-            {
-
-                std::cout << "Wheel Scrolled" << "\n";
-            }
-
+           
         }
 
         window.clear();
