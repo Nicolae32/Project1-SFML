@@ -7,13 +7,15 @@ int main()
     sf::RenderWindow window(sf::VideoMode(200, 200), ":]");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Red);
-        int upTime = 0;
+       
+        sf::Clock clock;
 
     while (window.isOpen())
     {
         sf::Event event;
-            upTime++;
-        std::cout << "Up Time :" << upTime <<"\n";
+            
+
+       
 
         while (window.pollEvent(event))
         {
