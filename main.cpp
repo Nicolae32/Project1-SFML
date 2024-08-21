@@ -6,15 +6,24 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), ":]");
     sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Red);
-       
-        sf::Clock clock;
+    shape.setFillColor(sf::Color::Red);   
+    sf::Clock clock;  
+    sf::Time time;
+    sf::Event event;
 
-    while (window.isOpen())
+
+
+
+    while (window.isOpen())                            //The game loop.
     {
-        sf::Event event;
-            
+        
+        
 
+        time = clock.getElapsedTime();
+
+        //std::cout << int(time.asSeconds())<< "\n";  //Gets time in seconds as integer.
+      
+        
        
 
         while (window.pollEvent(event))
@@ -30,14 +39,14 @@ int main()
                 case sf::Event::Resized:
                     std::cout << "height :" << " " << event.size.height << " " << "width :" << " " << event.size.width << "\n";
                     break;
+
                 case sf::Event::MouseWheelScrolled:
                     std::cout << "Wheel Scrolled" << "\n";
                     break;
-                //beta:
+                
                 case sf::Event::MouseButtonPressed:
                       shape.setFillColor(sf::Color::Blue);
-                    //std::cout << "Window Clicked!" << "\n";
-                     
+                  
                     break;
 
                 case sf::Event::MouseButtonReleased:
@@ -49,7 +58,7 @@ int main()
             }
            
         }
-
+            
         window.clear();
         window.draw(shape);
         window.display();
