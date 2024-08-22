@@ -4,13 +4,13 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), ":]");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Red);   
+    sf::RenderWindow window(sf::VideoMode(500, 500), ":]");
+    sf::RectangleShape player(sf::Vector2f(200, 200));
+    player.setFillColor(sf::Color::Red);   
     sf::Clock clock;  
     sf::Time time;
     sf::Event event;
-
+    sf::Text text;
 
 
 
@@ -20,8 +20,8 @@ int main()
         
 
         time = clock.getElapsedTime();
-
-        //std::cout << int(time.asSeconds())<< "\n";  //Gets time in seconds as integer.
+        
+        std::cout << int(time.asSeconds())<< "\n";      //Gets time in seconds as integer.
       
         
        
@@ -29,7 +29,7 @@ int main()
         while (window.pollEvent(event))
         {
 
-            switch (event.type)
+            switch (event.type)                        //The debugging thing.
             {
 
                 case sf::Event::Closed:
@@ -45,12 +45,12 @@ int main()
                     break;
                 
                 case sf::Event::MouseButtonPressed:
-                      shape.setFillColor(sf::Color::Blue);
+                      player.setFillColor(sf::Color::Blue);
                   
                     break;
 
                 case sf::Event::MouseButtonReleased:
-                    shape.setFillColor(sf::Color::Red);
+                    player.setFillColor(sf::Color::Red);
                     break;
 
 
@@ -58,9 +58,34 @@ int main()
             }
            
         }
+                                                        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))       //Gets the Keyboard input.
+            {
+                
+            player.move(-0.1f, 0.0f);
+
+            }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+            {
+                
+            player.move(0.0f, -0.1f);
+
+            }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+            {
+                
+            player.move(0.0f, 0.1f);
+
+            }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+            {
+                
+            player.move(0.1f, 0.0f);
+
+            }
             
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color::Green);
+        window.draw(player);
         window.display();
     }
 
