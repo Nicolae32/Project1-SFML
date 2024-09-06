@@ -6,17 +6,18 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(500, 500), ":]");
     sf::RectangleShape player(sf::Vector2f(200, 200));
-    player.setFillColor(sf::Color::Red);   
     sf::Clock clock;  
     sf::Time time;
     sf::Event event;
     sf::Text text;
-   
+    sf::Texture player_texture;
+    player_texture.loadFromFile("player_texture.png");
+    player.setTexture(&player_texture);
+    player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
 
     while (window.isOpen())                            //The game loop.
     {
-
-        player.setOrigin(player.getSize().x / 2, player.getSize().y / 2); //Sets the origin of the player in the middle.
+        
 
         time = clock.getElapsedTime();
 
@@ -43,21 +44,10 @@ int main()
                 std::cout << "Wheel Scrolled" << "\n";
                 break;
 
-            case sf::Event::MouseButtonPressed:
-                player.setFillColor(sf::Color::Blue);
-
-                break;
-
-            case sf::Event::MouseButtonReleased:
-                player.setFillColor(sf::Color::Red);
-                break;
-
-
-
             }
 
         }
-        /*
+        
        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))       //Gets the Keyboard input.
            {
 
@@ -82,7 +72,7 @@ int main()
            player.move(0.1f, 0.0f);
 
            }
-           */
+           
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))         //Moves the player to mouse.
         {
