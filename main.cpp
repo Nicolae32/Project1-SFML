@@ -1,17 +1,18 @@
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <iostream>
 
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(500, 500), ":]");
+    sf::RenderWindow window(sf::VideoMode(1500, 1500), ":]");
     sf::RectangleShape player(sf::Vector2f(200, 200));
     sf::Clock clock;  
     sf::Time time;
     sf::Event event;
     sf::Text text;
     sf::Texture player_texture;
-    player_texture.loadFromFile("player_texture.png");
+    player_texture.loadFromFile("player_texture.png")   ;
     player.setTexture(&player_texture);
     player.setOrigin(player.getSize().x / 2, player.getSize().y / 2);
 
@@ -47,7 +48,7 @@ int main()
             }
 
         }
-        
+
        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))       //Gets the Keyboard input.
            {
 
